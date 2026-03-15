@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_checking.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:41:35 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/13 14:20:17 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 21:41:44 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,27 @@ static int	is_valid_flag(char *str)
 	return (res);
 }
 
-int	check_duplicate(t_stack *stack)
+void	check_duplicate(t_stack *stack)
 {
-	t_stack	*temp;
+	t_stack	*runner;
+	t_stack *current;
 
-	while(stack)
+	current = stack;
+	while(current)
 	{
-		temp = stack->next;
-		while (temp)
+		runner = current->next;
+		while (runner)
 		{
-			if (stack->content == temp->content)
-				return (1);
-			temp = temp->next;
+			if (current->content == runner->content)
+			{
+				ft_printf("Error : [argument duplications]");
+				return ;
+			}
+
+			runner = runner->next;
 		}
-		stack = stack->next;
+		current = current->next;
 	}
-	return (0);
 }
 
 
@@ -67,7 +72,7 @@ static int is_number(char *str)
 	return (1);
 }
 
-int	check_flags(int argc, char **argv,t_strategy_info *flag_list, t_stack **stack)
+void check_flags(int argc, char **argv,t_strategy_info *flag_list, t_stack_ctrl *stack)
 {
 	int		i;
 
@@ -76,21 +81,26 @@ int	check_flags(int argc, char **argv,t_strategy_info *flag_list, t_stack **stac
 	{
 		if (argv[i][0] == '-' && !ft_isdigit(argv[i][1]))
 		{
-			if (is_valid_flag(argv[i]) == 1)
+			if (is_valid_flag(argv[i]) == 0)
 			{
-				//si c'est un flag valide, on l'ajoute dans strategy
-				//on teste si
+				ft_printf("Error : [flag incorrect]");
+				return ;
 			}
-			else
-				return (-1);
+			add_strategy(&flag_list, argv[i]);
+			if (ft_strcmp(argv[i], "--bench") == 0)
+				flag_list->bench_bool = 1;
 		}
-		else if (!is_number(argv[i]))
-			if (ft_strlen(argv[i]) == 1)
-				return (5);
-
+		else
+		{
+			if (!is_number(argv[i]) && !ft_strchr(argv[i], ' '))
+			{
+				ft_printf("Error : [argument incorrect]");
+				return ;
+			}
+			fill_stack(argv[i], stack);
+		}
 		i++;
 	}
-	return (0);
 }
 
 int	check_bench_flag(int argc, char **argv)

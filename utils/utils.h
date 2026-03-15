@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:12:37 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/13 15:56:47 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 20:35:08 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ typedef struct s_strategy_info
 }				t_strategy_info;
 
 int		ft_strcmp(const char *s1, const char*s2);
-float	compute_disorder(t_list *stack_a);
+float	compute_disorder(t_stack *stack_a);
 
 #endif

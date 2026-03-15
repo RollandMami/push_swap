@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 11:33:13 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/11 17:18:43 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 21:52:42 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,26 @@ int	ft_atoi(const char *nptr)
 				return (-2147483648);
 			return (2147483647);
 		}
+		result = result * 10 + ((int) nptr[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}
+
+long	ft_atol(const char *nptr)
+{
+	int			i;
+	int			sign;
+	long		result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
+		i++;
+	manage_sign(nptr, &i, &sign);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
 		result = result * 10 + ((int) nptr[i] - '0');
 		i++;
 	}
