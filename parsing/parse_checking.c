@@ -6,7 +6,7 @@
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:41:35 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/14 21:41:44 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/15 20:46:54 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void check_flags(int argc, char **argv,t_strategy_info *flag_list, t_stack_ctrl 
 				ft_printf("Error : [flag incorrect]");
 				return ;
 			}
-			add_strategy(&flag_list, argv[i]);
+			add_strategy(flag_list, argv[i]);
 			if (ft_strcmp(argv[i], "--bench") == 0)
 				flag_list->bench_bool = 1;
 		}
@@ -101,15 +101,6 @@ void check_flags(int argc, char **argv,t_strategy_info *flag_list, t_stack_ctrl 
 		}
 		i++;
 	}
-}
-
-int	check_bench_flag(int argc, char **argv)
-{
-	if (argc <= 2 || !argv)
-		return (0);
-	if (ft_strcmp(argv[1], "--bench") == 0)
-		return (1);
-	return (0);
 }
 
 

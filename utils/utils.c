@@ -6,7 +6,7 @@
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:23:29 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/14 22:04:55 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/15 20:38:54 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,29 @@ float	compute_disorder(t_stack *stack_a)
 	return (mistakes / total_pairs);
 }
 
-void	add_strategy(t_strategy_info **strategy, char *argv)
+void	add_strategy(t_strategy_info *strategy, char *argv)
 {
 	t_strategy	*new_node;
 
 	new_node = malloc (sizeof(t_strategy));
 	if (!new_node)
-		return (NULL);
+		return ;
 	new_node->content = argv;
 	new_node->next = NULL;
 
-	if ((*strategy)->head == NULL)
+	if (strategy->head == NULL)
 	{
-		(*strategy)->head = new_node;
-		(*strategy)->last = new_node;
+		strategy->head = new_node;
+		strategy->last = new_node;
 	}
 	else
 	{
-		(*strategy)->last->next = new_node;
-		(*strategy)->last=new_node;
+		strategy->last->next = new_node;
+		strategy->last=new_node;
 	}
-	(*strategy)->size++;
+	strategy->size++;
 	if (ft_strcmp(argv, "--bench") == 0)
-		(*strategy)->bench_bool = 1;
+		strategy->bench_bool = 1;
 
 }
 
@@ -109,8 +109,8 @@ void	fill_stack(char *str, t_stack_ctrl *stack)
 	contents = ft_atol(str);
 	if (contents > 2147483647 || contents < -2147483648)
 	{
-		ft_printf("Error : [INT min max over flow >>> %d]", contents);
-		return ;
+		ft_printf("Error : [INT min max over flow]");
+		exit(1);
 	}
 	new_node->content = ft_atoi(str);
 	new_node->index = 0;

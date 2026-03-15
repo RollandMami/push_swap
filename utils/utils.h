@@ -6,7 +6,7 @@
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:12:37 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/14 20:35:08 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/15 20:39:18 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ typedef struct s_strategy_info
 
 int		ft_strcmp(const char *s1, const char*s2);
 float	compute_disorder(t_stack *stack_a);
+void	add_strategy(t_strategy_info *strategy, char *argv);
+void	fill_stack(char *str, t_stack_ctrl *stack);
 
 #endif
