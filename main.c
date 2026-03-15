@@ -6,7 +6,7 @@
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:45 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/15 20:54:18 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/15 21:04:28 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int	main(int argc, char *argv[])
 	check_flags(argc, argv, &flag_list, &stack_a);
 	check_duplicate(stack_a.head);
 
-	ft_printf("%d",  stack_a.last->content);
+	ft_printf("%s",  flag_list.head->content);
+	
 	free_stack(&stack_a);
 	free_strategy(&flag_list);
 	return (0);

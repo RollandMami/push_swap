@@ -3,10 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/11 15:50:56 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/15 21:11:55 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef OPERATIONS_H
+# define OPERATIONS_H
+
+# include "../header.h"
+
+
+
+
+
+#endif
