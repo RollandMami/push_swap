@@ -15,8 +15,9 @@
 
 # include "../header.h"
 
-
-
-
+void    swap(t_stack_ctrl *stack);
+void    sa(t_stack_ctrl *stack_a, t_bench *bench, int is_ss);
+void    sb(t_stack_ctrl *stack_b, t_bench *bench, int is_ss);
+void    ss(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench);
 
 #endif
