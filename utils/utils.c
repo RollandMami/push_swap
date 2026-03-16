@@ -93,6 +93,8 @@ void	fill_stack(char *str, t_stack_ctrl *stack)
 	if (ft_strchr(str, ' '))
 	{
 		sub = ft_split(str, ' ');
+		if (!sub)
+			return ;
 		i = 0;
 		while(sub[i])
 		{
@@ -109,16 +111,24 @@ void	fill_stack(char *str, t_stack_ctrl *stack)
 	contents = ft_atol(str);
 	if (contents > 2147483647 || contents < -2147483648)
 	{
+		free(new_node);
 		ft_printf("Error : [INT min max over flow]");
 		exit(1);
 	}
-	new_node->content = ft_atoi(str);
+	new_node->content = (int)contents;
 	new_node->index = 0;
 	new_node->next = NULL;
 	if (!stack->head)
+	{
 		stack->head = new_node;
+		stack->last = new_node;
+		new_node->prev = NULL;
+	}
 	else
+	{
+		new_node->prev = stack->last;
 		stack->last->next = new_node;
-	stack->last = new_node;
+		stack->last = new_node;
+	}
 	stack->size++;
 }
