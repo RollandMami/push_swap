@@ -6,7 +6,7 @@
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:45 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/15 21:04:28 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/17 21:45:59 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,25 @@ int	main(int argc, char *argv[])
 	t_strategy_info	flag_list;
 	t_stack_ctrl	stack_a;
 	t_bench			bench;
+	int				disorder;
 
 	if (argc < 2)
 	{
 		ft_printf("Error: [Pas d'arguments]\n");
 		return (1);
 	}
+	if (argc == 2)
+	{
+		ft_printf("loggin_info : on ne fait rien pour un seul argument\n");
+		return (1);		
+	}
 	initialisation(&flag_list, &stack_a, &bench);
 	check_flags(argc, argv, &flag_list, &stack_a);
 	check_duplicate(stack_a.head);
-	ft_printf("%s", flag_list.head->content);
+	disorder = (int)(compute_disorder(stack_a.head) * 100);
+	if (bench.total > 1)
+		bench.disorder = disorder;
+	push_swap(&flag_list, &stack_a, &bench, disorder);
 	free_stack(&stack_a);
 	free_strategy(&flag_list);
 	return (0);

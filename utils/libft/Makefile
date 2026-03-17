@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+         #
+#    By: rolland <rolland@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/20 14:20:37 by mamiandr          #+#    #+#              #
-#    Updated: 2026/02/09 17:06:26 by mamiandr         ###   ########.fr        #
+#    Updated: 2026/03/17 18:32:58 by rolland          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-RM = rm -f
+RM = rm -rf
 
 SRC = ft_atoi.c\
       ft_bzero.c\
@@ -59,18 +59,20 @@ SRC = ft_atoi.c\
       ft_lstiter.c\
       ft_lstmap.c\
 
-OBJ = $(SRC:.c=.o)
+OBJ_DIR = ../../obj/utils/libft
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-%.o: %.c libft.h
+$(OBJ_DIR)/%.o: %.c libft.h
+	@mkdir -p $(dir $@)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+         #
+#    By: rolland <rolland@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/19 16:08:19 by mamiandr          #+#    #+#              #
-#    Updated: 2026/02/20 14:43:21 by mamiandr         ###   ########.fr        #
+#    Updated: 2026/03/17 18:33:08 by rolland          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,21 +22,23 @@ SRC = ft_printf.c\
       ft_putptr.c\
       ft_putstr.c\
 
-OBJ = $(SRC:.c=.o)
+OBJ_DIR = ../../obj/utils/ft_printf
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 

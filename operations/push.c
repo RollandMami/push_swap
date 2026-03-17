@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/15 21:11:55 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/17 21:29:42 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	push(t_stack_ctrl *from, t_stack_ctrl *to)
 
 void	pa(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 {
+	if (!stack_b || !stack_b->head)
+		return ;
 	push(stack_b, stack_a);
 	ft_printf("pa\n");
 	if (bench)
@@ -47,6 +49,8 @@ void	pa(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 
 void	pb(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 {
+	if (!stack_a || !stack_a->head)
+		return ;
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 	if (bench)

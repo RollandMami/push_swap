@@ -6,7 +6,7 @@
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 21:08:32 by rolland           #+#    #+#             */
-/*   Updated: 2026/03/15 21:29:28 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/17 21:26:35 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	swap(t_stack_ctrl *stack)
 
 void	sa(t_stack_ctrl *stack_a, t_bench *bench, int is_ss)
 {
+	if (stack_a->size <= 1)
+		return ;
 	swap(stack_a);
 	if (!is_ss)
 	{
@@ -50,6 +52,8 @@ void	sa(t_stack_ctrl *stack_a, t_bench *bench, int is_ss)
 
 void	sb(t_stack_ctrl *stack_b, t_bench *bench, int is_ss)
 {
+	if (stack_b->size <= 1)
+		return ;
 	swap(stack_b);
 	if (!is_ss)
 	{
@@ -64,6 +68,9 @@ void	sb(t_stack_ctrl *stack_b, t_bench *bench, int is_ss)
 
 void	ss(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 {
+	if (!( (stack_a && stack_a->size > 1) ||
+			(stack_b && stack_b->size > 1) ))
+		return ;
 	sa(stack_a, bench, 1);
 	sb(stack_b, bench, 1);
 	if (bench)
