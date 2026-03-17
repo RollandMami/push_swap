@@ -112,3 +112,4 @@ Otherwise:
  * [The Big-O notation - On medium.com](https://medium.com/@nioperas06/la-notation-big-o-4767d188f875)
  * [The Big-O notation and examples](https://www.youtube.com/watch?v=QaNwlm8AzMA&t=333s) Youtube video
  * [Introduction to Big O Notation - Neso Academy](https://www.youtube.com/watch?v=4nUDZtRX38U&list=PLBlnK6fEyqRhe8C6qXX0d8fq0TnuQS8Wd) Youtube video
+![1773734079423](image/README/1773734079423.png)

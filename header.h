@@ -21,5 +21,6 @@
 # include "./utils/utils.h"
 # include "./parsing/parsing.h"
 # include "./operations/operations.h"
+# include "./algorithme/algorithme.h"
 
 #endif

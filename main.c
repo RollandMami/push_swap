@@ -13,7 +13,8 @@
 #include "header.h"
 #include <stdio.h>
 
-static void	initialisation(t_strategy_info *flag, t_stack_ctrl *stack, t_bench *bench)
+static void	initialisation(t_strategy_info *flag,
+				t_stack_ctrl *stack, t_bench *bench)
 {
 	ft_memset(flag, 0, sizeof(t_strategy_info));
 	ft_memset(stack, 0, sizeof(t_stack_ctrl));
@@ -22,7 +23,7 @@ static void	initialisation(t_strategy_info *flag, t_stack_ctrl *stack, t_bench *
 
 static void	free_stack(t_stack_ctrl *stack)
 {
-	t_stack *current;
+	t_stack	*current;
 	t_stack	*temp;
 
 	if (!stack || !stack->head)
@@ -41,13 +42,13 @@ static void	free_stack(t_stack_ctrl *stack)
 
 static void	free_strategy(t_strategy_info *strategy)
 {
-	t_strategy *current;
-	t_strategy *temp;
+	t_strategy	*current;
+	t_strategy	*temp;
 
 	if (!strategy || !strategy->head)
 		return ;
 	current = strategy->head;
-	while(current)
+	while (current)
 	{
 		temp = current->next;
 		free(current);
@@ -71,12 +72,9 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	initialisation(&flag_list, &stack_a, &bench);
-	// verification des flags et args + fill stack
 	check_flags(argc, argv, &flag_list, &stack_a);
 	check_duplicate(stack_a.head);
-
-	ft_printf("%s",  flag_list.head->content);
-	
+	ft_printf("%s", flag_list.head->content);
 	free_stack(&stack_a);
 	free_strategy(&flag_list);
 	return (0);

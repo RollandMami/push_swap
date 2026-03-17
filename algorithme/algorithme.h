@@ -1,11 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/10 14:44:48 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/10 14:44:49 by mamiandr         ###   ########.fr       */
+/*   Created: 2026/03/09 16:12:37 by mamiandr          #+#    #+#             */
+/*   Updated: 2026/03/15 20:39:18 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ALGORITHME_H
+# define ALGORITHME_H
+
+# include "../header.h"
+
+#endif

@@ -66,7 +66,6 @@ void	add_strategy(t_strategy_info *strategy, char *argv)
 		return ;
 	new_node->content = argv;
 	new_node->next = NULL;
-
 	if (strategy->head == NULL)
 	{
 		strategy->head = new_node;
@@ -75,19 +74,41 @@ void	add_strategy(t_strategy_info *strategy, char *argv)
 	else
 	{
 		strategy->last->next = new_node;
-		strategy->last=new_node;
+		strategy->last = new_node;
 	}
 	strategy->size++;
 	if (ft_strcmp(argv, "--bench") == 0)
 		strategy->bench_bool = 1;
+}
 
+static void	add_to_stack(char *str, t_stack_ctrl *stack)
+{
+	t_stack	*new;
+	long	val;
+
+	val = ft_atol(str);
+	if (val > 2147483647 || val < -2147483648)
+	{
+		ft_printf("Error : [INT min max overflow]\n");
+		exit(1);
+	}
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return ;
+	new->content = (int)val;
+	new->next = NULL;
+	new->prev = stack->last;
+	if (!stack->head)
+		stack->head = new;
+	else
+		stack->last->next = new;
+	stack->last = new;
+	stack->size++;
 }
 
 void	fill_stack(char *str, t_stack_ctrl *stack)
 {
 	char		**sub;
-	t_stack		*new_node;
-	long		contents;
 	int			i;
 
 	if (ft_strchr(str, ' '))
@@ -96,7 +117,7 @@ void	fill_stack(char *str, t_stack_ctrl *stack)
 		if (!sub)
 			return ;
 		i = 0;
-		while(sub[i])
+		while (sub[i])
 		{
 			fill_stack(sub[i], stack);
 			free(sub[i]);
@@ -105,30 +126,6 @@ void	fill_stack(char *str, t_stack_ctrl *stack)
 		free(sub);
 		return ;
 	}
-	new_node = malloc (sizeof(t_stack));
-	if (!new_node)
-		return ;
-	contents = ft_atol(str);
-	if (contents > 2147483647 || contents < -2147483648)
-	{
-		free(new_node);
-		ft_printf("Error : [INT min max over flow]");
-		exit(1);
-	}
-	new_node->content = (int)contents;
-	new_node->index = 0;
-	new_node->next = NULL;
-	if (!stack->head)
-	{
-		stack->head = new_node;
-		stack->last = new_node;
-		new_node->prev = NULL;
-	}
-	else
-	{
-		new_node->prev = stack->last;
-		stack->last->next = new_node;
-		stack->last = new_node;
-	}
-	stack->size++;
+	else if (str[0] != '\0')
+		add_to_stack(str, stack);
 }

@@ -12,59 +12,61 @@
 
 #include "operations.h"
 
-void	rotation(t_stack_ctrl *stack)
+void	r_rotation(t_stack_ctrl *stack)
 {
-	t_stack	*old_head;
 	t_stack	*new_head;
+	t_stack	*new_last;
 
 	if (!stack || !stack->head || stack->size < 2)
 		return ;
-	old_head = stack->head;
-	new_head = old_head->next;
+	new_head = stack->last;
+	new_last = new_head->prev;
+	if (!new_last)
+		return ;
 	new_head->prev = NULL;
-	old_head->next = NULL;
-	old_head->prev = stack->last;
-	stack->last->next = old_head;
-	stack->last = old_head;
+	new_head->next = stack->head;
+	stack->head->prev = new_head;
 	stack->head = new_head;
+	new_last->next = NULL;
+	stack->last = new_last;
 }
 
-void	ra(t_stack_ctrl *stack_a, t_bench *bench, int is_rr)
+void	rra(t_stack_ctrl *stack_a, t_bench *bench, int is_rrr)
 {
-	rotation(stack_a);
-	if (!is_rr)
+	r_rotation(stack_a);
+	if (!is_rrr)
 	{
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 		if (bench)
 		{
-			bench->ra++;
+			bench->rra++;
 			bench->total++;
 		}
 	}
 }
 
-void	rb(t_stack_ctrl *stack_b, t_bench *bench, int is_rr)
+void	rrb(t_stack_ctrl *stack_b, t_bench *bench, int is_rrr)
 {
-	rotation(stack_b);
-	if (!is_rr)
+	r_rotation(stack_b);
+	if (!is_rrr)
 	{
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 		if (bench)
 		{
-			bench->rb++;
+			bench->rrb++;
 			bench->total++;
 		}
 	}
 }
 
-void	rr(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
+void	rrr(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 {
-	ra(stack_a, bench, 1);
-	rb(stack_b, bench, 1);
-	ft_printf("rr\n");
+	rra(stack_a, bench, 1);
+	rrb(stack_b, bench, 1);
+	ft_printf("rrr\n");
 	if (bench)
 	{
-		bench->rr++;
+		bench->rrr++;
 		bench->total++;
 	}
 }

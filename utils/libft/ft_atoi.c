@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 static void	manage_sign(const char *str, int *i, int *sign)
 {
 	if (str[(*i)] == '-' || str[(*i)] == '+')

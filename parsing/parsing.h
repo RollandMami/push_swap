@@ -15,8 +15,9 @@
 
 # include "../header.h"
 
-void	    check_duplicate(t_stack *stack);
-void		check_flags(int argc, char **argv,t_strategy_info *flag_list, t_stack_ctrl *stack);
-char    	**normalize_argv(int argc, char **argv);
+void	check_duplicate(t_stack *stack);
+void	check_flags(int argc, char **argv,
+			t_strategy_info *flag_list, t_stack_ctrl *stack);
+char	**normalize_argv(int argc, char **argv);
 
 #endif
