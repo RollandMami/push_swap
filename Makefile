@@ -11,6 +11,7 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 SRC = main.c\
 	  parsing/parse_checking.c\
+	  parsing/parse_utils.c\
 	  utils/utils.c\
 	  operations/push.c\
 	  operations/rotation.c\

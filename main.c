@@ -6,7 +6,7 @@
 /*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:45 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/17 21:45:59 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/17 22:12:50 by rolland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,15 @@ int	main(int argc, char *argv[])
 	initialisation(&flag_list, &stack_a, &bench);
 	check_flags(argc, argv, &flag_list, &stack_a);
 	check_duplicate(stack_a.head);
+	if (is_sorted(&stack_a));
+	{
+		free_stack(&stack_a);
+		free_strategy(&flag_list);		
+	}
 	disorder = (int)(compute_disorder(stack_a.head) * 100);
+	push_swap(&flag_list, &stack_a, &bench, disorder);
 	if (bench.total > 1)
 		bench.disorder = disorder;
-	push_swap(&flag_list, &stack_a, &bench, disorder);
 	free_stack(&stack_a);
 	free_strategy(&flag_list);
 	return (0);
