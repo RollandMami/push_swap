@@ -12,7 +12,30 @@
 
 #include "algorithme.h"
 
-void	simple(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, float disorder)
+void	simple(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 {
-	//
+	t_stack	*min;
+	int		pos;
+
+	if (!stack_a || !stack_a->head)
+		return ;
+	while (stack_a->size > 3)
+	{
+		min = get_min(stack_a);
+		pos = get_position(stack_a, min);
+		if (pos <= stack_a->size / 2)
+		{
+			while (stack_a->head != min)
+				ra(stack_a, bench, 0);
+		}
+		else
+		{
+			while (stack_a->head != min)
+				rra(stack_a, bench, 0);
+		}
+		pb(stack_a, stack_b, bench);
+	}
+	three_args(stack_a, bench);
+	while (stack_b->size > 0)
+		pa(stack_a, stack_b, bench);
 }

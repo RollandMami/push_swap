@@ -19,5 +19,8 @@ void	check_duplicate(t_stack *stack);
 void	check_flags(int argc, char **argv,
 			t_strategy_info *flag_list, t_stack_ctrl *stack);
 char	**normalize_argv(int argc, char **argv);
+int		get_position(t_stack_ctrl *stack, t_stack *min);
+t_stack	*get_min(t_stack_ctrl *stack);
+int 	is_sorted(t_stack_ctrl *stack);
 
 #endif

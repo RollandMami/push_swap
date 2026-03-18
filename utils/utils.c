@@ -98,6 +98,9 @@ static void	add_to_stack(char *str, t_stack_ctrl *stack)
 	new->content = (int)val;
 	new->next = NULL;
 	new->prev = stack->last;
+	new->index = 0;
+	if (stack->last)
+		new->index = stack->last->index + 1;
 	if (!stack->head)
 		stack->head = new;
 	else

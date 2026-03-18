@@ -66,6 +66,5 @@ int		ft_strcmp(const char *s1, const char*s2);
 float	compute_disorder(t_stack *stack_a);
 void	add_strategy(t_strategy_info *strategy, char *argv);
 void	fill_stack(char *str, t_stack_ctrl *stack);
-int		is_sorted(t_stack_ctrl *stack);
 
 #endif

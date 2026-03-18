@@ -25,7 +25,7 @@ void	manage_strategy(t_strategy_info *flags, t_stack_ctrl *stack_a, t_stack_ctrl
 		return ;
 	}
 	if (ft_strcmp(strat, "--simple") == 0)
-		simple(stack_a, stack_b, bench, disorder);
+		simple(stack_a, stack_b, bench);
 	else if (ft_strcmp(strat, "--adaptative") == 0)
 		adaptative(stack_a, stack_b, bench, disorder);
 	else if (ft_strcmp(strat, "--medium") == 0)

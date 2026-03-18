@@ -82,6 +82,7 @@ int	main(int argc, char *argv[])
 	check_duplicate(stack_a.head);
 	if (is_sorted(&stack_a));
 	{
+		ft_printf("loggin_info : la stack est déjà triée\n");
 		free_stack(&stack_a);
 		free_strategy(&flag_list);		
 	}
