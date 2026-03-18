@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:48 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/17 15:46:49 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/18 22:31:52 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	manage_strategy(t_strategy_info *flags, t_stack_ctrl *stack_a, t_stack_ctrl
 
 	if (!flags && (!stack_a || !bench) )
 		return ;
+	if (is_sorted(stack_a))
+        return ;
 	strat = flags->last->content;
 	if (!flags || flags->size == 0 || !flags->last)
 	{
@@ -38,10 +40,10 @@ void    push_swap(t_strategy_info *flags, t_stack_ctrl *stack_a, t_bench *bench,
 {
 	t_stack_ctrl	stack_b;
 
-	ft_memset(stack_b, 0, sizeof(t_stack_ctrl));
+	ft_memset(&stack_b, 0, sizeof(t_stack_ctrl));
 	if (disorder == 0)
 	{
-		free_stack(stack_b);
+		free_stack(&stack_b);
 		return ;
 	}
 	else if (stack_a->size == 2)
@@ -49,8 +51,8 @@ void    push_swap(t_strategy_info *flags, t_stack_ctrl *stack_a, t_bench *bench,
 	else if (stack_a->size <= 3)
 		three_args(stack_a, bench);
 	else if (stack_a->size <= 5)
-		five_args(stack_a, stack_b, bench);
+		five_args(stack_a, &stack_b, bench);
 	else
 		manage_strategy(flags, stack_a, &stack_b, bench, disorder);
-	free_stack(stack_b);
+	free_stack(&stack_b);
 }

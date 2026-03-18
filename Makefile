@@ -10,9 +10,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 SRC = main.c\
+	  push_swap.c\
 	  parsing/parse_checking.c\
 	  parsing/parse_utils.c\
 	  utils/utils.c\
+	  utils/free_obj.c\
+	  utils/print_bench.c\
 	  operations/push.c\
 	  operations/rotation.c\
 	  operations/swap.c\

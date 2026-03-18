@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:38:03 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 07:38:03 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/18 22:34:05 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	five_args(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 	t_stack	*min;
 	int		pos;
 
-	while (stack_a->size > 3)
+	if (is_sorted(stack_a))
+        return ;
+	while (!is_sorted(stack_a) && stack_a->size > 3)
 	{
 		min = get_min(stack_a);
 		pos = get_position(stack_a, min);

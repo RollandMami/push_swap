@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:12:37 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/17 22:02:14 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/18 21:50:26 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct s_bench
 	int	ss;
 	int	pa;
 	int	pb;
-	int	disorder;
+	float	disorder;
 	int	total;
+	char	*formula;
 }			t_bench;
 
 typedef struct s_stack
@@ -64,7 +65,12 @@ typedef struct s_strategy_info
 
 int		ft_strcmp(const char *s1, const char*s2);
 float	compute_disorder(t_stack *stack_a);
+void	free_stack(t_stack_ctrl *stack);
+void	free_strategy(t_strategy_info *strategy);
 void	add_strategy(t_strategy_info *strategy, char *argv);
 void	fill_stack(char *str, t_stack_ctrl *stack);
+char	*get_strategy_name(t_strategy_info *flag);
+void	print_bench(t_strategy_info *strategy,t_bench *bench);
+char	*get_formula(char *strategy);
 
 #endif

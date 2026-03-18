@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolland <rolland@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:45 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/17 22:12:50 by rolland          ###   ########.fr       */
+/*   Updated: 2026/03/18 21:54:06 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,45 +19,6 @@ static void	initialisation(t_strategy_info *flag,
 	ft_memset(flag, 0, sizeof(t_strategy_info));
 	ft_memset(stack, 0, sizeof(t_stack_ctrl));
 	ft_memset(bench, 0, sizeof(t_bench));
-}
-
-static void	free_stack(t_stack_ctrl *stack)
-{
-	t_stack	*current;
-	t_stack	*temp;
-
-	if (!stack || !stack->head)
-		return ;
-	current = stack->head;
-	while (current)
-	{
-		temp = current->next;
-		free(current);
-		current = temp;
-	}
-	stack->head = NULL;
-	stack->last = NULL;
-	stack->size = 0;
-}
-
-static void	free_strategy(t_strategy_info *strategy)
-{
-	t_strategy	*current;
-	t_strategy	*temp;
-
-	if (!strategy || !strategy->head)
-		return ;
-	current = strategy->head;
-	while (current)
-	{
-		temp = current->next;
-		free(current);
-		current = temp;
-	}
-	strategy->bench_bool = 0;
-	strategy->head = NULL;
-	strategy->last = NULL;
-	strategy->size = 0;
 }
 
 int	main(int argc, char *argv[])
@@ -80,16 +41,20 @@ int	main(int argc, char *argv[])
 	initialisation(&flag_list, &stack_a, &bench);
 	check_flags(argc, argv, &flag_list, &stack_a);
 	check_duplicate(stack_a.head);
-	if (is_sorted(&stack_a));
+	if (is_sorted(&stack_a))
 	{
 		ft_printf("loggin_info : la stack est déjà triée\n");
 		free_stack(&stack_a);
-		free_strategy(&flag_list);		
+		free_strategy(&flag_list);	
+		return (0);	
 	}
 	disorder = compute_disorder(stack_a.head);
 	push_swap(&flag_list, &stack_a, &bench, disorder);
-	if (bench.total > 1)
+	if (flag_list.bench_bool)
+	{
 		bench.disorder = disorder;
+		print_bench(&flag_list, &bench);
+	}
 	free_stack(&stack_a);
 	free_strategy(&flag_list);
 	return (0);
