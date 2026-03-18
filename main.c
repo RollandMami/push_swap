@@ -65,7 +65,7 @@ int	main(int argc, char *argv[])
 	t_strategy_info	flag_list;
 	t_stack_ctrl	stack_a;
 	t_bench			bench;
-	int				disorder;
+	float			disorder;
 
 	if (argc < 2)
 	{
@@ -85,7 +85,7 @@ int	main(int argc, char *argv[])
 		free_stack(&stack_a);
 		free_strategy(&flag_list);		
 	}
-	disorder = (int)(compute_disorder(stack_a.head) * 100);
+	disorder = compute_disorder(stack_a.head);
 	push_swap(&flag_list, &stack_a, &bench, disorder);
 	if (bench.total > 1)
 		bench.disorder = disorder;

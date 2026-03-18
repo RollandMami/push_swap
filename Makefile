@@ -17,7 +17,12 @@ SRC = main.c\
 	  operations/rotation.c\
 	  operations/swap.c\
 	  operations/reverse_rotation.c\
-
+	  algorithme/simple.c\
+	  algorithme/medium.c\
+	  algorithme/complex.c\
+	  algorithme/adaptative.c\
+	  algorithme/fewer_args.c\
+	  algorithme/algo_utils.c\
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

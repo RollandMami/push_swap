@@ -15,4 +15,11 @@
 
 # include "../header.h"
 
+void	adaptative(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, float disorder);
+void	two_args(t_stack_ctrl *stack_a, t_bench *bench);
+void	three_args(t_stack_ctrl *stack_a, t_bench *bench);
+void	five_args(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench);
+void	simple(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, float disorder);
+void	medium(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, float disorder);
+void	complex(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, float disorder);
 #endif
