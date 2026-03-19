@@ -35,8 +35,6 @@ char	*get_formula(char *strategy)
 		return ("O(n2)");
 	else if (ft_strcmp(strategy, "Medium") == 0)
 		return ("O(n√n)");
-	else if (ft_strcmp(strategy, "Adaptative") == 0)
-		return ("O(n√n)");
 	else if (ft_strcmp(strategy, "Complex") == 0)
 		return ("O(nlogn)");
 	return ("N/A");
@@ -50,12 +48,15 @@ void	print_bench(t_strategy_info *strategy, t_bench *b)
 	if (!b || strategy->bench_bool == 0)
 		return ;
 	name = get_strategy_name(strategy);
-	formula = get_formula(name);
+	if (ft_strcmp(name, "Adaptative") == 0)
+		formula = b->formula;
+	else
+		formula = get_formula(name);
 	ft_printf("[bench] disorder:  %d%%\n", (int)(b->disorder * 100));
 	ft_printf("[bench] strategy:   %s / %s\n", name, formula);
 	ft_printf("[bench] total_ops: %d\n", b->total);
 	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n", b->sa,
 		b->sb, b->ss, b->pa, b->pb);
-	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d  rrb:  %d  rrr:  \
-			%d\n", b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
+	ft_printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
+		b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }
