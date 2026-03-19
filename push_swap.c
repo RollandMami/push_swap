@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:48 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 17:42:03 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:03:32 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	manage_strategy(t_strategy_info *flags, t_stack_ctrl *stack_a,
 	if (is_sorted(stack_a))
 		return ;
 	if (!flags || flags->size == 0 || !flags->last)
-		{
-			adaptative(stack_a, stack_b, bench, flags);
-			return ;
-		}
+	{
+		adaptative(stack_a, stack_b, bench, flags);
+		return ;
+	}
 	strat = flags->last->content;
 	if (ft_strcmp(strat, "--simple") == 0)
 		simple(stack_a, stack_b, bench, flags);

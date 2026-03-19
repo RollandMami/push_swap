@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 15:52:54 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 16:55:13 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:02:30 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ typedef struct s_strategy_info
 	int					bench_bool;
 	int					size;
 }				t_strategy_info;
-
 
 #endif

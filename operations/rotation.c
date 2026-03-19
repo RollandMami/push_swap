@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 16:28:30 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:06:36 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	rb(t_stack_ctrl *stack_b, t_bench *bench, int is_rr, int is_bench)
 	rotation(stack_b);
 	if (!is_rr)
 	{
-		if(!is_bench)
+		if (!is_bench)
 			ft_printf("rb\n");
 		if (bench)
 		{

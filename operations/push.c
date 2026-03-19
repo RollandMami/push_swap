@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 16:16:41 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:05:59 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	push(t_stack_ctrl *from, t_stack_ctrl *to)
 	to->size++;
 }
 
-void	pa(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, int is_bench)
+void	pa(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench,
+			int is_bench)
 {
 	if (!stack_b || !stack_b->head)
 		return ;
@@ -48,7 +49,8 @@ void	pa(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, int is_ben
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, int is_bench)
+void	pb(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench,
+			int is_bench)
 {
 	if (!stack_a || !stack_a->head)
 		return ;

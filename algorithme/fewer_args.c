@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:38:03 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 16:37:22 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:03:51 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	two_args(t_stack_ctrl *stack_a, t_bench *bench, t_strategy_info *strat)
 		sa(stack_a, bench, 0, strat->bench_bool);
 }
 
-void	three_args(t_stack_ctrl *stack_a, t_bench *bench, t_strategy_info *strat)
+void	three_args(t_stack_ctrl *stack_a, t_bench *bench,
+			t_strategy_info *strat)
 {
 	int	first;
 	int	second;

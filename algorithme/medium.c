@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:38:12 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 16:49:22 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:14:19 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	medium(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
 	(void)stack_b;
 	(void)bench;
 	(void)strategy;
+	int	tab[stack_a->size];
 
 	// 1. PHASE DE PREPARATION
-	int *stack_to_array(t_stack_ctrl *stack);
+	tab = stack_to_array(stack_a);
 	void quick_sort(int *array, int start, int end);
 	int binary_search(int *array, int size, int value); // recherche l'index du noeud dans le tableau trié
 	void index_stack(t_stack_ctrl *stack, int *sorted_array); // remplace stack->index des noeuds par leurs index dans le tableau trié

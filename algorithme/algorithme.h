@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:12:37 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 16:50:36 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:05:18 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 void	adaptative(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
 			t_bench *bench, t_strategy_info *strat);
 void	two_args(t_stack_ctrl *stack_a, t_bench *bench, t_strategy_info *strat);
-void	three_args(t_stack_ctrl *stack_a, t_bench *bench, t_strategy_info *strat);
+void	three_args(t_stack_ctrl *stack_a, t_bench *bench,
+			t_strategy_info *strat);
 void	five_args(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench,
 			t_strategy_info *strat);
 void	simple(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,

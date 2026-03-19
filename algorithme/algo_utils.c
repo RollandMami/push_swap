@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:39:22 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 17:36:29 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 18:17:53 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_stack	*get_min(t_stack_ctrl *stack)
 	min = stack->head;
 	while (current)
 	{
-		if (current->content < min->content)
+		if (current->index < min->index)
 			min = current;
 		current = current->next;
 	}
