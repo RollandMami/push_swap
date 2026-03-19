@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:38:03 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 22:34:05 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:57:39 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	five_args_optimisation(t_stack_ctrl *stack_a, t_bench *bench)
 	t_stack	*min;
 	int		pos;
 
-	if (is_circularly_sorted(stack_a))
+	if (is_circular_sorted(stack_a))
 	{
 		min = get_min(stack_a);
 		pos = get_position(stack_a, min);

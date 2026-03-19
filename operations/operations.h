@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 17:35:41 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:55:47 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OPERATIONS_H
 
 # include "../header.h"
+# include "../utils/struct.h"
 
 void	swap(t_stack_ctrl *stack);
 void	sa(t_stack_ctrl *stack_a, t_bench *bench, int is_ss);

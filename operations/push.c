@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 22:09:00 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:03:50 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ void	pa(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 	if (!stack_b || !stack_b->head)
 		return ;
 	push(stack_b, stack_a);
-	ft_printf("pa\n");
 	if (bench)
 	{
 		bench->pa++;
 		bench->total++;
 	}
+	else
+		ft_printf("pa\n");
 }
 
 void	pb(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
@@ -52,10 +53,11 @@ void	pb(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 	if (!stack_a || !stack_a->head)
 		return ;
 	push(stack_a, stack_b);
-	ft_printf("pb\n");
 	if (bench)
 	{
 		bench->pb++;
 		bench->total++;
 	}
+	else
+		ft_printf("pb\n");
 }

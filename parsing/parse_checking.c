@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:41:35 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 21:27:21 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:40:46 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static int	is_valid_flag(char *str)
 	return (0);
 }
 
-void	check_duplicate(t_stack *stack)
+void	check_duplicate(t_stack_ctrl *stack)
 {
 	t_stack	*runner;
 	t_stack	*current;
 
-	current = stack;
+	current = stack->head;
 	while (current)
 	{
 		runner = current->next;
@@ -40,7 +40,7 @@ void	check_duplicate(t_stack *stack)
 	}
 }
 
-static int	is_number(char *str)
+int	is_number(char *str)
 {
 	int	i;
 

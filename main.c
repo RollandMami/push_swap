@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:45 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 21:54:06 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:00:27 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	parse_and_check(int ac, char **av, t_stack_ctrl *a,
 		error_exit(a, NULL, f, NULL);
 	}
 	check_flags(ac, av, f, a);
-	check_duplicate(a->head);
+	check_duplicate(a);
 }
 
 int	main(int argc, char *argv[])
