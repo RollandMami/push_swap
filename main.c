@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:45 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 16:00:27 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:59:27 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	initialisation(t_strategy_info *flag,
 	ft_memset(flag, 0, sizeof(t_strategy_info));
 	ft_memset(stack, 0, sizeof(t_stack_ctrl));
 	ft_memset(bench, 0, sizeof(t_bench));
+	bench->formula = NULL;
 }
 
 static void	parse_and_check(int ac, char **av, t_stack_ctrl *a,
@@ -54,10 +55,7 @@ int	main(int argc, char *argv[])
 	bench.disorder = disorder;
 	push_swap(&flag_list, &stack_a, &bench);
 	if (flag_list.bench_bool)
-	{
-		bench.disorder = disorder;
 		print_bench(&flag_list, &bench);
-	}
 	free_all(&stack_a, NULL, &flag_list, &bench);
 	return (0);
 }

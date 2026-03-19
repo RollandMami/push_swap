@@ -6,19 +6,19 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:38:03 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 15:57:39 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:37:22 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "algorithme.h"
 
-void	two_args(t_stack_ctrl *stack_a, t_bench *bench)
+void	two_args(t_stack_ctrl *stack_a, t_bench *bench, t_strategy_info *strat)
 {
 	if (stack_a->head->content > stack_a->head->next->content)
-		sa(stack_a, bench, 0);
+		sa(stack_a, bench, 0, strat->bench_bool);
 }
 
-void	three_args(t_stack_ctrl *stack_a, t_bench *bench)
+void	three_args(t_stack_ctrl *stack_a, t_bench *bench, t_strategy_info *strat)
 {
 	int	first;
 	int	second;
@@ -28,21 +28,21 @@ void	three_args(t_stack_ctrl *stack_a, t_bench *bench)
 	second = stack_a->head->next->content;
 	third = stack_a->head->next->next->content;
 	if (first > second && second < third && first < third)
-		sa(stack_a, bench, 0);
+		sa(stack_a, bench, 0, strat->bench_bool);
 	else if (first > second && second > third)
 	{
-		sa(stack_a, bench, 0);
-		rra(stack_a, bench, 0);
+		sa(stack_a, bench, 0, strat->bench_bool);
+		rra(stack_a, bench, 0, strat->bench_bool);
 	}
 	else if (first > second && second < third && first > third)
-		ra(stack_a, bench, 0);
+		ra(stack_a, bench, 0, strat->bench_bool);
 	else if (first < second && second > third && first < third)
 	{
-		sa(stack_a, bench, 0);
-		ra(stack_a, bench, 0);
+		sa(stack_a, bench, 0, strat->bench_bool);
+		ra(stack_a, bench, 0, strat->bench_bool);
 	}
 	else if (first < second && second > third && first > third)
-		rra(stack_a, bench, 0);
+		rra(stack_a, bench, 0, strat->bench_bool);
 }
 
 int	is_circular_sorted(t_stack_ctrl *stack)
@@ -65,7 +65,8 @@ int	is_circular_sorted(t_stack_ctrl *stack)
 	return (count <= 1);
 }
 
-void	five_args_optimisation(t_stack_ctrl *stack_a, t_bench *bench)
+void	five_args_optimisation(t_stack_ctrl *stack_a, t_bench *bench,
+			t_strategy_info *strat)
 {
 	t_stack	*min;
 	int		pos;
@@ -77,20 +78,21 @@ void	five_args_optimisation(t_stack_ctrl *stack_a, t_bench *bench)
 		while (!is_sorted(stack_a))
 		{
 			if (pos <= stack_a->size / 2)
-				ra(stack_a, bench, 0);
+				ra(stack_a, bench, 0, strat->bench_bool);
 			else
-				rra(stack_a, bench, 0);
+				rra(stack_a, bench, 0, strat->bench_bool);
 		}
 		return ;
 	}
 }
 
-void	five_args(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
+void	five_args(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench,
+			t_strategy_info *strat)
 {
 	t_stack	*min;
 	int		pos;
 
-	five_args_optimisation(stack_a, bench);
+	five_args_optimisation(stack_a, bench, strat);
 	if (is_sorted(stack_a))
 		return ;
 	while (stack_a->size > 3)
@@ -100,16 +102,16 @@ void	five_args(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 		if (pos <= stack_a->size / 2)
 		{
 			while (stack_a->head != min)
-				ra(stack_a, bench, 0);
+				ra(stack_a, bench, 0, strat->bench_bool);
 		}
 		else
 		{
 			while (stack_a->head != min)
-				rra(stack_a, bench, 0);
+				rra(stack_a, bench, 0, strat->bench_bool);
 		}
-		pb(stack_a, stack_b, bench);
+		pb(stack_a, stack_b, bench, strat->bench_bool);
 	}
-	three_args(stack_a, bench);
+	three_args(stack_a, bench, strat);
 	while (stack_b->size > 0)
-		pa(stack_a, stack_b, bench);
+		pa(stack_a, stack_b, bench, strat->bench_bool);
 }

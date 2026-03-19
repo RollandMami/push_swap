@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 17:35:55 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:30:20 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ void	r_rotation(t_stack_ctrl *stack)
 	stack->last = new_last;
 }
 
-void	rra(t_stack_ctrl *stack_a, t_bench *bench, int is_rrr)
+void	rra(t_stack_ctrl *stack_a, t_bench *bench, int is_rrr, int is_bench)
 {
 	r_rotation(stack_a);
 	if (!is_rrr)
 	{
-		ft_printf("rra\n");
+		if (!is_bench)
+			ft_printf("rra\n");
 		if (bench)
 		{
 			bench->rra++;
@@ -45,12 +46,13 @@ void	rra(t_stack_ctrl *stack_a, t_bench *bench, int is_rrr)
 	}
 }
 
-void	rrb(t_stack_ctrl *stack_b, t_bench *bench, int is_rrr)
+void	rrb(t_stack_ctrl *stack_b, t_bench *bench, int is_rrr, int is_bench)
 {
 	r_rotation(stack_b);
 	if (!is_rrr)
 	{
-		ft_printf("rrb\n");
+		if (!is_bench)
+			ft_printf("rrb\n");
 		if (bench)
 		{
 			bench->rrb++;
@@ -59,11 +61,13 @@ void	rrb(t_stack_ctrl *stack_b, t_bench *bench, int is_rrr)
 	}
 }
 
-void	rrr(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
+void	rrr(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench,
+			int is_bench)
 {
-	rra(stack_a, bench, 1);
-	rrb(stack_b, bench, 1);
-	ft_printf("rrr\n");
+	rra(stack_a, bench, 1, is_bench);
+	rrb(stack_b, bench, 1, is_bench);
+	if (!is_bench)
+		ft_printf("rrr\n");
 	if (bench)
 	{
 		bench->rrr++;

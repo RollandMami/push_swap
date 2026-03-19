@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 21:08:32 by rolland           #+#    #+#             */
-/*   Updated: 2026/03/18 17:36:14 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:23:29 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	swap(t_stack_ctrl *stack)
 	stack->head = second;
 }
 
-void	sa(t_stack_ctrl *stack_a, t_bench *bench, int is_ss)
+void	sa(t_stack_ctrl *stack_a, t_bench *bench, int is_ss, int is_bench)
 {
 	if (stack_a->size <= 1)
 		return ;
@@ -46,11 +46,12 @@ void	sa(t_stack_ctrl *stack_a, t_bench *bench, int is_ss)
 			bench->sa++;
 			bench->total++;
 		}
-		ft_printf("sa\n");
+		if (!is_bench)
+			ft_printf("sa\n");
 	}
 }
 
-void	sb(t_stack_ctrl *stack_b, t_bench *bench, int is_ss)
+void	sb(t_stack_ctrl *stack_b, t_bench *bench, int is_ss, int is_bench)
 {
 	if (stack_b->size <= 1)
 		return ;
@@ -62,21 +63,24 @@ void	sb(t_stack_ctrl *stack_b, t_bench *bench, int is_ss)
 			bench->sb++;
 			bench->total++;
 		}
-		ft_printf("sb\n");
+		if (!is_bench)
+			ft_printf("sb\n");
 	}
 }
 
-void	ss(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
+void	ss(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench,
+			int is_bench)
 {
 	if (!((stack_a && stack_a->size > 1)
 			|| (stack_b && stack_b->size > 1)))
 		return ;
-	sa(stack_a, bench, 1);
-	sb(stack_b, bench, 1);
+	sa(stack_a, bench, 1, is_bench);
+	sb(stack_b, bench, 1, is_bench);
 	if (bench)
 	{
 		bench->ss++;
 		bench->total++;
 	}
-	ft_printf("ss\n");
+	if (!is_bench)
+		ft_printf("ss\n");
 }

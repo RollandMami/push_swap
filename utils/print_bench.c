@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 20:54:42 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 22:23:01 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:07:17 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_formula(char *strategy)
 		return ("O(n√n)");
 	else if (ft_strcmp(strategy, "Complex") == 0)
 		return ("O(nlogn)");
-	return ("N/A");
+	return ("O(...)");
 }
 
 void	print_bench(t_strategy_info *strategy, t_bench *b)
@@ -48,7 +48,7 @@ void	print_bench(t_strategy_info *strategy, t_bench *b)
 	if (!b || strategy->bench_bool == 0)
 		return ;
 	name = get_strategy_name(strategy);
-	if (ft_strcmp(name, "Adaptative") == 0)
+	if (b->formula)
 		formula = b->formula;
 	else
 		formula = get_formula(name);

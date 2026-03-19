@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:48 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 22:31:52 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:42:03 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void	manage_strategy(t_strategy_info *flags, t_stack_ctrl *stack_a,
 {
 	char	*strat;
 
-	if (!flags && (!stack_a || !bench))
+	if (!flags || !stack_a || !bench)
 		return ;
 	if (is_sorted(stack_a))
 		return ;
-	strat = flags->last->content;
 	if (!flags || flags->size == 0 || !flags->last)
-	{
-		adaptative(stack_a, stack_b, bench, bench->disorder);
-		return ;
-	}
+		{
+			adaptative(stack_a, stack_b, bench, flags);
+			return ;
+		}
+	strat = flags->last->content;
 	if (ft_strcmp(strat, "--simple") == 0)
-		simple(stack_a, stack_b, bench);
-	else if (ft_strcmp(strat, "--adaptative") == 0)
-		adaptative(stack_a, stack_b, bench, bench->disorder);
+		simple(stack_a, stack_b, bench, flags);
 	else if (ft_strcmp(strat, "--medium") == 0)
-		medium(stack_a, stack_b, bench, bench->disorder);
+		medium(stack_a, stack_b, bench, flags);
 	else if (ft_strcmp(strat, "--complex") == 0)
-		complex(stack_a, stack_b, bench, bench->disorder);
+		complex(stack_a, stack_b, bench, flags);
+	else
+		adaptative(stack_a, stack_b, bench, flags);
 }
 
 void	push_swap(t_strategy_info *flags, t_stack_ctrl *stack_a,
@@ -49,12 +49,20 @@ void	push_swap(t_strategy_info *flags, t_stack_ctrl *stack_a,
 		return ;
 	}
 	else if (stack_a->size == 2)
-		two_args(stack_a, bench);
+	{
+		two_args(stack_a, bench, flags);
+		bench->formula = "O(n2)";
+	}
 	else if (stack_a->size <= 3)
-		three_args(stack_a, bench);
+	{
+		three_args(stack_a, bench, flags);
+		bench->formula = "O(n2)";
+	}
 	else if (stack_a->size <= 5)
-		five_args(stack_a, &stack_b, bench);
+	{
+		five_args(stack_a, &stack_b, bench, flags);
+		bench->formula = "O(n2)";
+	}
 	else
 		manage_strategy(flags, stack_a, &stack_b, bench);
-	free_stack(&stack_b);
 }

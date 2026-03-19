@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 15:50:20 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/18 17:35:59 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:28:30 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,28 @@ void	rotation(t_stack_ctrl *stack)
 	stack->last = old_head;
 }
 
-void	ra(t_stack_ctrl *stack_a, t_bench *bench, int is_rr)
+void	ra(t_stack_ctrl *stack_a, t_bench *bench, int is_rr, int is_bench)
 {
 	rotation(stack_a);
 	if (!is_rr)
 	{
-		ft_printf("ra\n");
 		if (bench)
 		{
 			bench->ra++;
 			bench->total++;
 		}
+		if (!is_bench)
+			ft_printf("ra\n");
 	}
 }
 
-void	rb(t_stack_ctrl *stack_b, t_bench *bench, int is_rr)
+void	rb(t_stack_ctrl *stack_b, t_bench *bench, int is_rr, int is_bench)
 {
 	rotation(stack_b);
 	if (!is_rr)
 	{
-		ft_printf("rb\n");
+		if(!is_bench)
+			ft_printf("rb\n");
 		if (bench)
 		{
 			bench->rb++;
@@ -57,11 +59,13 @@ void	rb(t_stack_ctrl *stack_b, t_bench *bench, int is_rr)
 	}
 }
 
-void	rr(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
+void	rr(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench,
+			int is_bench)
 {
-	ra(stack_a, bench, 1);
-	rb(stack_b, bench, 1);
-	ft_printf("rr\n");
+	ra(stack_a, bench, 1, is_bench);
+	rb(stack_b, bench, 1, is_bench);
+	if (!is_bench)
+		ft_printf("rr\n");
 	if (bench)
 	{
 		bench->rr++;
