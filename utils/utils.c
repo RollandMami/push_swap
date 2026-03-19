@@ -122,7 +122,9 @@ void	fill_stack(char *str, t_stack_ctrl *stack)
 		i = 0;
 		while (sub[i])
 		{
-			fill_stack(sub[i], stack);
+			if (!is_number(sub[i]))
+				error_exit(stack, NULL, NULL, NULL);
+			add_to_stack(sub[i], stack);
 			free(sub[i]);
 			i++;
 		}

@@ -23,7 +23,9 @@
 # include "./operations/operations.h"
 # include "./algorithme/algorithme.h"
 
-void    push_swap(t_strategy_info *flags, t_stack_ctrl *stack_a, t_bench *bench, float disorder);
-void    manage_strategy(t_strategy_info *flags, t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, float disorder);
+void	push_swap(t_strategy_info *flags, t_stack_ctrl *stack_a,
+			t_bench *bench);
+void	manage_strategy(t_strategy_info *flags, t_stack_ctrl *stack_a,
+			t_stack_ctrl *stack_b, t_bench *bench);
 
 #endif

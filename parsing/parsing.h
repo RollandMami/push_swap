@@ -21,6 +21,6 @@ void	check_flags(int argc, char **argv,
 char	**normalize_argv(int argc, char **argv);
 int		get_position(t_stack_ctrl *stack, t_stack *min);
 t_stack	*get_min(t_stack_ctrl *stack);
-int 	is_sorted(t_stack_ctrl *stack);
+int		is_sorted(t_stack_ctrl *stack);
 
 #endif

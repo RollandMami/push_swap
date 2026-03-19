@@ -45,14 +45,55 @@ void	three_args(t_stack_ctrl *stack_a, t_bench *bench)
 		rra(stack_a, bench, 0);
 }
 
+int	is_circular_sorted(t_stack_ctrl *stack)
+{
+	t_stack	*current;
+	int		count;
+
+	if (!stack || !stack->head || stack->size < 2)
+		return (1);
+	count = 0;
+	current = stack->head;
+	while (current->next)
+	{
+		if (current->content > current->next->content)
+			count++;
+		current = current->next;
+	}
+	if (current->content > stack->head->content)
+		count++;
+	return (count <= 1);
+}
+
+void	five_args_optimisation(t_stack_ctrl *stack_a, t_bench *bench)
+{
+	t_stack	*min;
+	int		pos;
+
+	if (is_circularly_sorted(stack_a))
+	{
+		min = get_min(stack_a);
+		pos = get_position(stack_a, min);
+		while (!is_sorted(stack_a))
+		{
+			if (pos <= stack_a->size / 2)
+				ra(stack_a, bench, 0);
+			else
+				rra(stack_a, bench, 0);
+		}
+		return ;
+	}
+}
+
 void	five_args(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 {
 	t_stack	*min;
 	int		pos;
 
+	five_args_optimisation(stack_a, bench);
 	if (is_sorted(stack_a))
-        return ;
-	while (!is_sorted(stack_a) && stack_a->size > 3)
+		return ;
+	while (stack_a->size > 3)
 	{
 		min = get_min(stack_a);
 		pos = get_position(stack_a, min);

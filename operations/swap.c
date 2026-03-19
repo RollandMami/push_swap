@@ -18,7 +18,7 @@ void	swap(t_stack_ctrl *stack)
 	t_stack	*second;
 	t_stack	*reste;
 
-	if (!stack || !stack->head || !stack->head->next || stack->size < 2)
+	if (!stack || stack->size < 2)
 		return ;
 	first = stack->head;
 	second = first->next;
@@ -68,8 +68,8 @@ void	sb(t_stack_ctrl *stack_b, t_bench *bench, int is_ss)
 
 void	ss(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench)
 {
-	if (!( (stack_a && stack_a->size > 1) ||
-			(stack_b && stack_b->size > 1) ))
+	if (!((stack_a && stack_a->size > 1)
+			|| (stack_b && stack_b->size > 1)))
 		return ;
 	sa(stack_a, bench, 1);
 	sb(stack_b, bench, 1);

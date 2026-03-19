@@ -18,19 +18,19 @@
 
 typedef struct s_bench
 {
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
 	float	disorder;
-	int	total;
+	int		total;
 	char	*formula;
 }			t_bench;
 
@@ -70,7 +70,12 @@ void	free_strategy(t_strategy_info *strategy);
 void	add_strategy(t_strategy_info *strategy, char *argv);
 void	fill_stack(char *str, t_stack_ctrl *stack);
 char	*get_strategy_name(t_strategy_info *flag);
-void	print_bench(t_strategy_info *strategy,t_bench *bench);
+void	print_bench(t_strategy_info *strategy, t_bench *bench);
 char	*get_formula(char *strategy);
+void	free_bench(t_bench *bench);
+void	error_exit(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
+			t_strategy_info *flags, t_bench *bench);
+void	free_all(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
+			t_strategy_info *flags, t_bench *bench);
 
 #endif

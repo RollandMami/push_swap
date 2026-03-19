@@ -12,7 +12,8 @@
 
 #include "algorithme.h"
 
-void	adaptative(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b, t_bench *bench, float disorder)
+void	adaptative(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
+			t_bench *bench, float disorder)
 {
 	int	size;
 

@@ -33,10 +33,7 @@ void	check_duplicate(t_stack *stack)
 		while (runner)
 		{
 			if (current->content == runner->content)
-			{
-				ft_printf("Error : [argument duplications]");
-				exit(1);
-			}
+				error_exit(stack, NULL, NULL, NULL);
 			runner = runner->next;
 		}
 		current = current->next;
@@ -64,10 +61,7 @@ static int	is_number(char *str)
 static void	parse_flag(char *arg, t_strategy_info *flag_list)
 {
 	if (is_valid_flag(arg) == 0)
-	{
-		ft_printf("Error : [flag incorrect]\n");
-		exit(1);
-	}
+		error_exit(NULL, NULL, flag_list, NULL);
 	if (ft_strcmp(arg, "--bench") == 0)
 		flag_list->bench_bool = 1;
 	else
@@ -89,10 +83,7 @@ void	check_flags(int argc, char **argv,
 		else
 		{
 			if (!is_number(argv[i]) && !ft_strchr(argv[i], ' '))
-			{
-				ft_printf("Error : [argument incorrect]");
-				exit(1);
-			}
+				error_exit(stack, NULL, flag_list, NULL);
 			fill_stack(argv[i], stack);
 		}
 		i++;

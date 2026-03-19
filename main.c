@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "header.h"
-#include <stdio.h>
 
 static void	initialisation(t_strategy_info *flag,
 				t_stack_ctrl *stack, t_bench *bench)
@@ -21,6 +20,19 @@ static void	initialisation(t_strategy_info *flag,
 	ft_memset(bench, 0, sizeof(t_bench));
 }
 
+static void	parse_and_check(int ac, char **av, t_stack_ctrl *a,
+				t_strategy_info *f)
+{
+	if (ac == 2 && !ft_strchr(av[1], ' '))
+	{
+		if (is_number(av[1]))
+			exit(0);
+		error_exit(a, NULL, f, NULL);
+	}
+	check_flags(ac, av, f, a);
+	check_duplicate(a->head);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_strategy_info	flag_list;
@@ -28,34 +40,24 @@ int	main(int argc, char *argv[])
 	t_bench			bench;
 	float			disorder;
 
-	if (argc < 2)
-	{
-		ft_printf("Error: [Pas d'arguments]\n");
-		return (1);
-	}
-	if (argc == 2)
-	{
-		ft_printf("loggin_info : on ne fait rien pour un seul argument\n");
-		return (1);		
-	}
 	initialisation(&flag_list, &stack_a, &bench);
-	check_flags(argc, argv, &flag_list, &stack_a);
-	check_duplicate(stack_a.head);
+	if (argc < 2)
+		return (0);
+	parse_and_check(argc, argv, &stack_a, &flag_list);
 	if (is_sorted(&stack_a))
 	{
-		ft_printf("loggin_info : la stack est déjà triée\n");
-		free_stack(&stack_a);
-		free_strategy(&flag_list);	
-		return (0);	
+		ft_printf("Already sorted\n"); // a enlever sur version finale
+		free_all(&stack_a, NULL, &flag_list, &bench);
+		return (0);
 	}
 	disorder = compute_disorder(stack_a.head);
-	push_swap(&flag_list, &stack_a, &bench, disorder);
+	bench.disorder = disorder;
+	push_swap(&flag_list, &stack_a, &bench);
 	if (flag_list.bench_bool)
 	{
 		bench.disorder = disorder;
 		print_bench(&flag_list, &bench);
 	}
-	free_stack(&stack_a);
-	free_strategy(&flag_list);
+	free_all(&stack_a, NULL, &flag_list, &bench);
 	return (0);
 }

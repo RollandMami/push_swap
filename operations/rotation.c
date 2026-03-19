@@ -22,11 +22,11 @@ void	rotation(t_stack_ctrl *stack)
 	old_head = stack->head;
 	new_head = old_head->next;
 	new_head->prev = NULL;
+	stack->head = new_head;
 	old_head->next = NULL;
 	old_head->prev = stack->last;
 	stack->last->next = old_head;
 	stack->last = old_head;
-	stack->head = new_head;
 }
 
 void	ra(t_stack_ctrl *stack_a, t_bench *bench, int is_rr)
