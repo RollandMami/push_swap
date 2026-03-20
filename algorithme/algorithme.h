@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:12:37 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 18:05:18 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/20 20:03:10 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ int		get_position(t_stack_ctrl *stack, t_stack *min);
 int		is_circular_sorted(t_stack_ctrl *stack);
 void	five_args_optimisation(t_stack_ctrl *stack_a, t_bench *bench,
 			t_strategy_info *strat);
+void	quick_sort(int	*tableau, int bas, int haut);
+int		tab_partition(int *tableau, int bas, int haut);
+void	insertion_sort(int	*tableau, int size);
+void	prepare_stack(t_stack_ctrl *stack, t_bench *bench);
 
 #endif

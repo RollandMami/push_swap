@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:44:45 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 17:59:27 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/20 21:03:03 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int argc, char *argv[])
 	}
 	disorder = compute_disorder(stack_a.head);
 	bench.disorder = disorder;
+	prepare_stack(&stack_a, &bench);
 	push_swap(&flag_list, &stack_a, &bench);
 	if (flag_list.bench_bool)
 		print_bench(&flag_list, &bench);
