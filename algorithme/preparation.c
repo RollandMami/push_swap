@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:07:53 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/20 20:10:43 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/21 07:15:06 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	prepare_stack(t_stack_ctrl *stack, t_bench *bench)
 	if (!tab)
 		return ;
 	if (stack->size <= 15 || bench->disorder >= 0.9)
-		insertion_sort(tab,stack->size);
+		insertion_sort(tab, stack->size);
 	else
 		quick_sort(tab, 0, stack->size - 1);
 	index_stack(stack, tab);

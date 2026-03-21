@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 11:28:35 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/20 21:49:14 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/21 07:19:21 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	*stack_to_array(t_stack_ctrl *stack)
 {
-	int	*result;
-	int	i;
-	t_stack *current;
+	int		*result;
+	int		i;
+	t_stack	*current;
 
 	if (!stack || !stack->head)
 		return (NULL);
-	result = malloc (sizeof(int)*stack->size);
+	result = malloc (sizeof(int) * stack->size);
 	if (!result)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	current = stack->head;
 	while (current)
@@ -33,6 +33,7 @@ int	*stack_to_array(t_stack_ctrl *stack)
 	}
 	return (result);
 }
+
 void	index_stack(t_stack_ctrl *stack, int *array)
 {
 	t_stack	*node;
@@ -54,7 +55,7 @@ void	index_stack(t_stack_ctrl *stack, int *array)
 
 t_stack	*find_by_index(t_stack_ctrl *stack, int index)
 {
-	t_stack *node;
+	t_stack	*node;
 
 	if (!stack || !stack->head)
 		return (NULL);

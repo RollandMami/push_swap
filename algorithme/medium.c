@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:38:12 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/21 00:13:12 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/21 07:22:06 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,33 @@ static int	get_chunk(int size, float disorder)
 	return (chunk);
 }
 
-static void	push_back(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
+static void	push_back(t_stack_ctrl *a, t_stack_ctrl *b,
 			t_bench *bench, t_strategy_info *strategy)
 {
-	t_stack *target;
+	t_stack	*target;
 	int		pos;
 	int		index;
 
-	while (stack_b->size > 0)
+	while (b->size > 0)
 	{
-		index = stack_b->size -1;
-		target = find_by_index(stack_b, index);
-		pos = get_position(stack_b, target);
-		while (stack_b->head != target)
+		index = b->size -1;
+		target = find_by_index(b, index);
+		pos = get_position(b, target);
+		while (b->head != target)
 		{
-			if (stack_b->head->index == index - 2)
+			if (b->head->index == index - 1)
 			{
-				pa(stack_a, stack_b, bench, strategy->bench_bool);
+				pa(a, b, bench, strategy->bench_bool);
 				index--;
 			}
-			else if (pos > stack_b->size / 2)
-				rrb(stack_b, bench, 0, strategy->bench_bool);
+			else if (pos > b->size / 2)
+				rrb(b, bench, 0, strategy->bench_bool);
 			else
-				rb(stack_b, bench, 0, strategy->bench_bool);
+				rb(b, bench, 0, strategy->bench_bool);
 		}
-		pa(stack_a, stack_b, bench, strategy->bench_bool);
-		if (stack_a->size > 1 && stack_a->head->index > stack_a->head->next->index)
-            sa(stack_a, bench, 0, strategy->bench_bool);
+		pa(a, b, bench, strategy->bench_bool);
+		if (a->size > 1 && a->head->index > a->head->next->index)
+			sa(a, bench, 0, strategy->bench_bool);
 	}
 }
 
@@ -80,7 +80,8 @@ void	medium(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
 			pb(stack_a, stack_b, bench, strategy->bench_bool);
 			i++;
 		}
-		ra(stack_a, bench, 0, strategy->bench_bool);
+		else
+			ra(stack_a, bench, 0, strategy->bench_bool);
 	}
 	push_back(stack_a, stack_b, bench, strategy);
 }
