@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:38:12 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/21 07:22:06 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/21 07:33:48 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ static void	push_back(t_stack_ctrl *a, t_stack_ctrl *b,
 		while (b->head != target)
 		{
 			if (b->head->index == index - 1)
-			{
 				pa(a, b, bench, strategy->bench_bool);
-				index--;
-			}
 			else if (pos > b->size / 2)
 				rrb(b, bench, 0, strategy->bench_bool);
 			else

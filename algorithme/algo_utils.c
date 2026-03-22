@@ -6,7 +6,7 @@
 /*   By: mamiandr <mamiandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 07:39:22 by mamiandr          #+#    #+#             */
-/*   Updated: 2026/03/19 18:17:53 by mamiandr         ###   ########.fr       */
+/*   Updated: 2026/03/21 18:12:34 by mamiandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,29 @@ int	get_position(t_stack_ctrl *stack, t_stack *min)
 		pos++;
 	}
 	return (-1);
+}
+
+int	get_median(t_stack_ctrl *stack, int len)
+{
+	int		i;
+	int		*temp;
+	t_stack	*runner;
+
+	if (!stack || len <= 0)
+		return (-1);
+	temp = malloc (sizeof(int) * len);
+	if (!temp)
+		return (-1);
+	i = 0;
+	runner = stack->head;
+	while (i < len && runner)
+	{
+		temp[i] = runner->index;
+		i++;
+		runner = runner->next;
+	}
+	quick_sort(temp, 0, len - 1);
+	i = temp[len / 2];
+	free(temp);
+	return (i);
 }
