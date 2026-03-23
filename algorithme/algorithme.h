@@ -39,11 +39,17 @@ int		tab_partition(int *tableau, int bas, int haut);
 void	insertion_sort(int	*tableau, int size);
 void	prepare_stack(t_stack_ctrl *stack, t_bench *bench);
 void	sort_three_a(t_stack_ctrl *a, t_stack_ctrl *b, t_bench *bn,
-		t_strategy_info *st);
-void	quick_sort_a(t_stack_ctrl *a, t_stack_ctrl *b, int len, t_bench *bn, t_strategy_info *st);
-void	quick_sort_b(t_stack_ctrl *a, t_stack_ctrl *b, int len, t_bench *bn, t_strategy_info *st);
+			t_strategy_info *st);
+void	quick_sort_a(t_stack_ctrl *a, t_stack_ctrl *b,
+			t_bench *bn, t_strategy_info *st);
+void	quick_sort_b(t_stack_ctrl *a, t_stack_ctrl *b,
+			t_bench *bn, t_strategy_info *st);
 void	complex(t_stack_ctrl *stack_a, t_stack_ctrl *stack_b,
-            t_bench *bench, t_strategy_info *strategy);
+			t_bench *bench, t_strategy_info *strategy);
 int		get_median(t_stack_ctrl *stack, int len);
+int		is_sorted_block(t_stack_ctrl *stack, int len);
+int		is_rev_sorted_block(t_stack_ctrl *stack, int len);
+void	sort_three_a(t_stack_ctrl *a, t_stack_ctrl *b, t_bench *bn,
+			t_strategy_info *st);
 
 #endif

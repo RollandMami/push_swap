@@ -47,7 +47,6 @@ int	main(int argc, char *argv[])
 	parse_and_check(argc, argv, &stack_a, &flag_list);
 	if (is_sorted(&stack_a))
 	{
-		ft_printf("Already sorted\n"); // a enlever sur version finale
 		free_all(&stack_a, NULL, &flag_list, &bench);
 		return (0);
 	}

@@ -22,6 +22,7 @@ SRC = main.c\
 	  operations/reverse_rotation.c\
 	  algorithme/simple.c\
 	  algorithme/complex.c\
+	  algorithme/complex_utils.c\
 	  algorithme/adaptative.c\
 	  algorithme/fewer_args.c\
 	  algorithme/algo_utils.c\

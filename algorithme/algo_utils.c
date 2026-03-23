@@ -89,3 +89,18 @@ int	get_median(t_stack_ctrl *stack, int len)
 	free(temp);
 	return (i);
 }
+
+int	is_sorted_block(t_stack_ctrl *stack, int len)
+{
+	t_stack	*tmp;
+
+	tmp = stack->head;
+	while (len > 0 && tmp && tmp->next)
+	{
+		if (tmp->index > tmp->next->index)
+			return (0);
+		tmp = tmp->next;
+		len--;
+	}
+	return (1);
+}
